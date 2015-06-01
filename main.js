@@ -21,8 +21,6 @@ var auth = {
   }
 }
 
-console.log(auth)
-
 reddit.setupOAuth2(auth.app.id, auth.app.secret);
 
 reddit.auth({
@@ -49,12 +47,12 @@ function processComment(comment, index, array) {
         console.error(err)
       } else {
         if (exists == 0) {
-          console.log(comment.data.body);
+          //console.log(comment.data.body);
           if (process.argv[2] != "-todate" || process.env.ARGS != "todate") {
-            var fullmatch = /(\w*?)-ass (.*?)(?=[.,?!;])/
-            var cutmatch = /(\w*?)-ass (.*?)/
-            if (fullmatch.test(comment.data.body)) {
-              var ftfy = comment.data.body.match(fullmatch)[0].replace(cutmatch, "\*$1 ass-$2")
+            var regex = /(\w*?)-ass ((\w|\s)+)/
+            if (regex.test(comment.data.body)) {
+              console.log(comment.data.body);
+              var ftfy = comment.data.body.match(regex)[0].replace(regex, "\*$1 ass-$2")
               console.log(ftfy)
               if (process.argv[2] != "-declaw" || process.env.ARGS != "declaw") {
                 reddit.comment(comment.data.name, ftfy, function(err, comment) {
