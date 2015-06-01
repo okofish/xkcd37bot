@@ -9,6 +9,7 @@
     "declaw": "node main.js -declaw"
   },
   "dependencies": {
+    "q": "^1.4.1",
     "raw.js": "^0.4.0",
     "reddit-stream": "^1.2.0",
     "redis": "^0.12.1"

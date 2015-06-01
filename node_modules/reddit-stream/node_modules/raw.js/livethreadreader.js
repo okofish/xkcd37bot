@@ -1,4 +1,4 @@
-var reddit = global.reddit;
+var reddit = require('./index.js');
 var WebSocket = require('ws');
 var request = require('request');
 

@@ -1,4 +1,4 @@
-var reddit = global.reddit;
+var reddit = require('../index.js');
 
 reddit.prototype.inviteLiveContributor = function(threadID, username, permissions, callback) {
 	if(typeof permissions == 'function') {

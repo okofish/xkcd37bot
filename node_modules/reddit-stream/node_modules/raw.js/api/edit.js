@@ -1,4 +1,4 @@
-var reddit = global.reddit;
+var reddit = require('../index.js');
 
 // reddit._addSimpleRequest = function(name, endpoint, method, args, constArgs, callback)
 reddit._addSimpleRequest("del", "del", "POST", ["id"], null, "_noResponse");

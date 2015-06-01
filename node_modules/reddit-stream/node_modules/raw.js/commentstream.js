@@ -1,4 +1,4 @@
-var reddit = global.reddit;
+var reddit = require('./index.js');
 var request = require('request');
 
 reddit.CommentStream = CommentStream;
