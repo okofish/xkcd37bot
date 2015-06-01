@@ -1,6 +1,6 @@
 {
   "name": "xkcd37bot",
-  "description": "Reddit bot to enforcc XKCD #37",
+  "description": "Reddit bot to enforce XKCD #37",
   "repository": "https://github.com/okofish/xkcd37bot",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["xkcd","reddit"]

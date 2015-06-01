@@ -1,7 +1,7 @@
 {
   "name": "xkcd37bot",
   "version": "0.0.1",
-  "description": "Reddit bot to enforcc XKCD #37",
+  "description": "Reddit bot to enforce XKCD #37",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
