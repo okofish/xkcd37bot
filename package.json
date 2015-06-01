@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "todate": "node main.js -todate"
+    "todate": "node main.js -todate",
+    "declaw": "node main.js -declaw"
   },
   "dependencies": {
     "raw.js": "^0.4.0",

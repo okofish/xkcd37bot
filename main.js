@@ -50,11 +50,13 @@ function processComment(comment, index, array) {
             if (fullmatch.test(comment.data.body)) {
               var ftfy = comment.data.body.match(fullmatch)[0].replace(cutmatch, "\*$1 ass-$2")
               console.log(ftfy)
-              reddit.comment(comment.data.name, ftfy, function(err, comment) {
-                if (err) {
-                  console.error(err)
-                }
-              })
+              if (process.argv[2] != "-declaw") {
+                reddit.comment(comment.data.name, ftfy, function(err, comment) {
+                  if (err) {
+                    console.error(err)
+                  }
+                })
+              }
             }
           }
 
