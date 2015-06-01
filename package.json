@@ -1,14 +1,16 @@
 {
   "name": "xkcd37bot",
   "version": "0.0.1",
-  "description": "Enforces XKCD #37",
+  "description": "Reddit bot to enforcc XKCD #37",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
     "todate": "node main.js -todate"
   },
   "dependencies": {
-    "express": "~4.9.x"
+    "raw.js": "^0.4.0",
+    "reddit-stream": "^1.2.0",
+    "redis": "^0.12.1"
   },
   "engines": {
     "node": "0.12.2"
@@ -18,9 +20,8 @@
     "url": "https://github.com/okofish/xkcd37bot"
   },
   "keywords": [
-    "node",
-    "heroku",
-    "express"
+    "xkcd",
+    "reddit"
   ],
   "license": "MIT"
 }
