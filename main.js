@@ -52,7 +52,7 @@ function processComment(comment, index, array) {
             var regex = /(\w*?)-ass ((\w|\s)+)/
             if (regex.test(comment.data.body)) {
               console.log(comment.data.body);
-              var ftfy = comment.data.body.match(regex)[0].replace(regex, "\*$1 ass-$2")
+              var ftfy = comment.data.body.match(regex)[0].replace(regex, "\\\*$1 ass-$2")
               console.log(ftfy)
               if (process.argv[2] != "-declaw" || process.env.ARGS != "declaw") {
                 reddit.comment(comment.data.name, ftfy, function(err, comment) {
