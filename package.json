@@ -1,0 +1,26 @@
+{
+  "name": "xkcd37bot",
+  "version": "0.0.1",
+  "description": "Enforces XKCD #37",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "todate": "node main.js -todate"
+  },
+  "dependencies": {
+    "express": "~4.9.x"
+  },
+  "engines": {
+    "node": "0.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okofish/xkcd37bot"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
