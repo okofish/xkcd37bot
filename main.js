@@ -2,6 +2,7 @@
 var botName = process.env.XKCD37BOT_USERNAME;
 
 var rawjs = require('raw.js');
+
 var reddit = new rawjs(botName);
 
 var redis = require("redis");
@@ -9,7 +10,8 @@ var url = require('url');
 var redisURL = url.parse(process.env.REDIS_URL);
 var redisclient = redis.createClient(redisURL.port, redisURL.hostname);
 redisclient.auth(redisURL.auth.split(":")[1]);;
-var RedditStream = require('reddit-stream');
+//var RedditStream = require('reddit-stream');
+var RedditStream = require('./reddit-stream.js');
 var comment_stream = new RedditStream('comments', 'xkcd', 'bot/' + botName)
 
 var auth = {
@@ -49,7 +51,7 @@ function processComment(comment, index, array) {
         if (exists == 0) {
           //console.log(comment.data.body);
           if (process.argv[2] != "-todate" || process.env.ARGS != "todate") { // bringing the empty redis db "to date" when the bot is started for the first time
-            var regex = /(\w*?)-ass ([^.!?,:;]+)/i
+            var regex = /(\w*?)-ass ([^.!?,:;()]+)/i
             if (regex.test(comment.data.body)) {
               console.log(comment.data.body);
               var ftfy = comment.data.body.match(regex)[0].replace(regex, "\\\*$1 ass-$2")
