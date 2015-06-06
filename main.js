@@ -51,7 +51,7 @@ function processComment(comment, index, array) {
         if (exists == 0) {
           //console.log(comment.data.body);
           if (process.argv[2] != "-todate" || process.env.ARGS != "todate") { // bringing the empty redis db "to date" when the bot is started for the first time
-            var regex = /(\w*?)-ass ([^.!?,:;()]+)/i
+            var regex = /(\w*?)-ass (\w+)/i
             if (regex.test(comment.data.body)) {
               console.log(comment.data.body);
               var ftfy = comment.data.body.match(regex)[0].replace(regex, "\\\*$1 ass-$2")
