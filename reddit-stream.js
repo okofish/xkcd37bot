@@ -123,6 +123,7 @@ module.exports = RedditStream = (function(_super) {
         }
         if ((error != null) || (items == null)) {
           if (error != null) {
+            console.error(error)
             _this.emit('error', {
               message: 'could not get items (error)',
               response: response,
