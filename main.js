@@ -47,32 +47,33 @@ reddit.auth({
 
 function processComment(comment, index, array) {
   if (comment.data.author != botName && ((mode == 'blacklist' && blacklist.indexOf(comment.data.subreddit.toLowerCase()) == -1) || (mode == 'whitelist' && whitelist.indexOf(comment.data.subreddit.toLowerCase()) != -1) || (mode != 'blacklist' && mode != 'whitelist'))) {
-    redisclient.exists(comment.data.name, function(err, exists) {
-      if (err) {
-        console.error(err)
-      } else {
-        if (exists == 0) {
-          //console.log(comment.data.body);
-          if (process.argv[2] != "-todate" || process.env.ARGS != "todate") { // bringing the empty redis db "to date" when the bot is started for the first time
-            var regex = /([^.!?,:;()\s]*?)-ass ([^.!?,:;()\s]+)/i
-            if (regex.test(comment.data.body)) {
-              console.log(comment.data.body);
-              var ftfy = comment.data.body.match(regex)[0].replace(regex, "\\\*$1 ass-$2")
-              console.log(ftfy)
-              if (process.argv[2] != "-declaw" || process.env.ARGS != "declaw") {
-                reddit.comment(comment.data.name, ftfy + "\n\n\n\n*****\nI am a bot in beta for a period of five days. If I screw up really, really majorly, PM /u/okofish.", function(err, comment) {
-                  if (err) {
-                    console.error(err)
-                  }
-                })
-              }
+    if (process.argv[2] != "-todate" || process.env.ARGS != "todate") { // bringing the empty redis db "to date" when the bot is started for the first time
+      var regex = /([^.!?,:;()\s]*?)-ass ([^.!?,:;()\s]+)/i
+      if (regex.test(comment.data.body)) {
+        redisclient.exists(comment.data.name, function(err, exists) {
+        if (err) {
+          console.error(err)
+        } else {
+          if (exists == 0) {
+            console.log(comment.data.body);
+            var ftfy = comment.data.body.match(regex)[0].replace(regex, "\\\*$1 ass-$2")
+            console.log(ftfy)
+            if (process.argv[2] != "-declaw" || process.env.ARGS != "declaw") {
+              reddit.comment(comment.data.name, ftfy + "\n\n\n\n*****\nI am a bot in beta for a period of five days. If I screw up really, really majorly, PM /u/okofish.", function(err, comment) {
+                if (err) {
+                  console.error(err)
+                }
+              })
             }
-          }
 
-          redisclient.set(comment.data.name, "read")
+            redisclient.set(comment.data.name, "read")
+          }
         }
+      })
+
       }
-    })
+    }
+
 
   }
 }
