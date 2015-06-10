@@ -146,7 +146,9 @@ module.exports = RedditStream = (function(_super) {
                 response: response,
                 error: error
               })
-            };
+            } catch (e) {
+              console.error(e)
+            }
           } else {
             _this.emit('error', {
               message: 'could not get items (empty response):',
