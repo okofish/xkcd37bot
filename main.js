@@ -60,6 +60,7 @@ function processComment(comment, index, array) {
                 console.error(err)
               } else {
                 if (postexists == 0) {
+                  console.log(comment.data.link_id);
                   console.log(comment.data.body);
                   var ftfy = comment.data.body.match(regex)[0].replace(regex, "\\\*$1 ass-$2")
                   console.log(ftfy)
