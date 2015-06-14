@@ -65,7 +65,7 @@ function processComment(comment, index, array) {
                   var ftfy = comment.data.body.match(regex)[0].replace(regex, "\\\*$1 ass-$2")
                   console.log(ftfy)
                   if (process.argv[2] != "-declaw" || process.env.ARGS != "declaw") {
-                    reddit.comment(comment.data.name, ftfy + "\n\n\n\n*****\nI am a bot in beta for a period of five days. If I screw up really, really majorly, PM /u/okofish.", function(err, comment) {
+                    reddit.comment(comment.data.name, ftfy, function(err, comment) {
                       if (err) {
                         console.error(err)
                       }
